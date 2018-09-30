@@ -1,0 +1,15 @@
+--- # Tag functionality playbook
+- hosts: demo
+  user: ansiblejan
+  sudo: yes
+  connection: ssh
+  tasks:
+    - name: first name
+      raw: echo "ADAM " > /tmp/LOG
+      tags:
+        - firstname
+    - name: second name
+      raw: echo "M " > /tmp/LOG
+      tags:
+        - secondname
+

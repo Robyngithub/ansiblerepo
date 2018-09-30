@@ -1,0 +1,10 @@
+--- # playbook example
+- hosts: demo
+  user: ansiblejan
+  sudo: yes
+  connection: ssh
+  tasks:
+    - name: print numbers
+      command: echo {{ item }}
+      with_items: [ 0, 2, 4, 6, 8, 10 ]
+      when: item > 5

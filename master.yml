@@ -1,0 +1,15 @@
+--- # my first YML
+- hosts: 192.168.0.29
+  user: ansiblejan
+  sudo: yes
+  connection: ssh
+  gather_facts: yes
+  pre_tasks:
+  - name: start of the role
+    raw: date > startrole.log
+  roles:
+  - {role: prod, when: ansible_os_family == "RedHat" }
+  - {role: test, when: ansible_os_family == "debian" }
+  post_tasks:
+  - name: End of the role
+    raw: date > endrole.log
